@@ -14,7 +14,8 @@ spec:
     spec:
       tolerations:
       - key: "example-taint"
-        operator: "Exists"
+        value: "value"
+        effect: "NoSchedule"
       nodeSelector:
         example-node-label: "example-node-value"
       volumes:

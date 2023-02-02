@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example-app
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      tolerations:
+      - key: "example-taint"
+        operator: "Exists"
+      nodeSelector:
+        example-node-label: "example-node-value"
+      volumes:
+      - name: example-pv-claim
+        persistentVolumeClaim:
+          claimName: example-pvc
+      containers:
+      - name: example-container
+        image: example-image
+        volumeMounts:
+        - mountPath: "/example/data"
+          name: example-pv-claim

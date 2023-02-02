@@ -13,7 +13,7 @@ spec:
         app: example-app
     spec:
       tolerations:
-      - key: "example-taint"
+      - key: "key"
         value: "value"
         effect: "NoSchedule"
       nodeSelector:
